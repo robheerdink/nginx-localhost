@@ -1,0 +1,20 @@
+---
+version: '3'
+
+services:
+  nginx-autoindex:
+    container_name: localhost
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ngninx-localhost:latest
+    ports:
+      - 80:80
+    volumes:
+      - ${PWD}:/var/lib/nginx/html:ro
+      - ${PWD}/Videos:/home/rob/Videos
+    entrypoint:
+      - /usr/sbin/nginx
+    command:
+      - -g
+      - daemon off;
