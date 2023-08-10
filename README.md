@@ -21,9 +21,9 @@ vi /etc/nginx/http.d/default.conf
 cd /var/lib/nginx/html
 cd <symlink>
 
-# in docker-compose.yml we must give mount the content in the contaner
-# so e.g current directory to defualt ngninx root
-# but but also the mount the symlinks
+# in docker-compose.yml we must give add the mounts between host and container
+# - host current working directory: ngninx root folder
+# - <host symlink> : <path container> (container has access to /home/<user>)"
 volumes:
     - ${PWD}:/var/lib/nginx/html:ro
     - ${PWD}/Videos:/home/rob/Videos
